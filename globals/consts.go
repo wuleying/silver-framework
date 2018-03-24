@@ -1,9 +1,4 @@
-package consts
-
-import (
-	"github.com/wuleying/silver-framework/utils"
-	"time"
-)
+package globals
 
 // 全局常量
 const (
@@ -20,12 +15,4 @@ const (
 	// Clog skip 级别
 	CLOG_SKIP_DEFAULT      = 0
 	CLOG_SKIP_DISPLAY_INFO = 2
-)
-
-// 全局变量
-var (
-	// 根目录
-	ROOT_DIR = utils.FileGetParentDirectory(utils.FileGetCurrentDirectory())
-	// 当前时间
-	CURRENT_TIME = time.Now().String()
 )

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/go-clog/clog"
-	"github.com/wuleying/silver-framework/consts"
+	"github.com/wuleying/silver-framework/globals"
 	"os"
 )
 
@@ -21,5 +21,5 @@ func main() {
 	defer clog.Shutdown()
 
 	clog.Info("Hello, silver framework.")
-	clog.Info(consts.ROOT_DIR)
+	clog.Info(globals.ROOT_DIR)
 }
