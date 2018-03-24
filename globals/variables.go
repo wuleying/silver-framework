@@ -9,9 +9,9 @@ import (
 // 全局变量
 var (
 	// 根目录
-	ROOT_DIR = utils.FileGetParentDirectory(utils.FileGetCurrentDirectory())
+	RootDir = utils.FileGetParentDirectory(utils.FileGetCurrentDirectory())
 	// 当前时间
-	CURRENT_TIME = time.Now().String()
+	CurrentTime = time.Now().String()
 	// 配置文件路径
-	CONFIG_FILE_PATH = flag.String("config", "config-dev.ini", "config file path")
+	ConfigFilePath = flag.String("config", "config-dev.ini", "config file path")
 )

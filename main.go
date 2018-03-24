@@ -21,11 +21,11 @@ func init() {
 func main() {
 	defer clog.Shutdown()
 
-	config, err := config.ConfigInit()
+	config, err := config.Init()
 	if err != nil {
-		clog.Fatal(globals.CLOG_SKIP_DISPLAY_INFO, "Init config failed: %s", err.Error())
+		clog.Fatal(globals.ClogSkipDisplayInfo, "Init config failed: %s", err.Error())
 	}
 
 	clog.Info("Hello, %s.", config.Setting["project_name"])
-	clog.Info(globals.ROOT_DIR)
+	clog.Info(globals.RootDir)
 }

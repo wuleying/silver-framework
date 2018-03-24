@@ -8,25 +8,26 @@ import (
 	"github.com/wuleying/silver-framework/globals"
 )
 
+// Config struct
 type Config struct {
 	Setting map[string]string
 }
 
-// 初始化配置
-func ConfigInit() (Config, error) {
+// Init 初始化配置
+func Init() (Config, error) {
 	var config Config
 
 	flag.Parse()
-	go_config, err := goconfig.LoadConfigFile(*globals.CONFIG_FILE_PATH)
+	goconfig, err := goconfig.LoadConfigFile(*globals.ConfigFilePath)
 
 	if err != nil {
 		log.Printf("Read config file failed: %s", err)
 		return config, err
 	}
 
-	log.Printf("Load config file success: %s", *globals.CONFIG_FILE_PATH)
+	log.Printf("Load config file success: %s", *globals.ConfigFilePath)
 
-	config.Setting, _ = go_config.GetSection("setting")
+	config.Setting, _ = goconfig.GetSection("setting")
 
 	return config, nil
 }

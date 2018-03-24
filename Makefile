@@ -8,11 +8,14 @@ GO_BUILD=$(GO_CMD) build
 GO_CLEAN=$(GO_CMD) clean
 GO_TEST=$(GO_CMD) test
 GO_GET=$(GO_CMD) get
+GO_FMT=$(GO_CMD) fmt
+GO_VET=$(GO_CMD) tool vet
+GO_LINT=golint
 
 # Current time
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
-all: build
+default: build
 
 build:
 	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME) -v $(CUR_DIR)/*.go
@@ -23,11 +26,9 @@ clean:
 	rm $(BIN_DIR)/$(PROJECT_NAME)
 	@echo "$(CUR_TIME) [INFO ] Clean completed"
 
-test:
-	$(GO_TEST)
-
-test_cover:
-	$(GO_TEST) -cover
+fmt:
+	$(GO_FMT) .
+	@echo "$(CUR_TIME) [INFO ] Go fmt completed"
 
 godep:
 	godep save
@@ -43,3 +44,23 @@ run:
 
 stop:
 	pgrep -f $(PROJECT_NAME) | xargs kill -9
+
+# Test tools
+test:
+	$(GO_TEST)
+
+cover:
+	$(GO_TEST) -cover
+
+# Check tools
+check: vet lint
+
+vet:
+	$(GO_VET) $(shell find . -name "*.go" | egrep -v "vendor")
+	@echo "$(CUR_TIME) [INFO ] Vet checked\n"
+
+lint:
+	@for f in `find . -type d -depth 1 | egrep -v "vendor"`; do \
+		$(GO_LINT) $$f; \
+	done
+	@echo "$(CUR_TIME) [INFO ] Lint checked\n"

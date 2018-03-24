@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// 获取当前目录
+// FileGetCurrentDirectory 获取当前目录
 func FileGetCurrentDirectory() string {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
@@ -18,17 +18,17 @@ func FileGetCurrentDirectory() string {
 	return strings.Replace(dir, "\\", "/", -1)
 }
 
-// 获取上级目录
+// FileGetParentDirectory 获取上级目录
 func FileGetParentDirectory(directory string) string {
 	return StringSub(directory, 0, strings.LastIndex(directory, "/"))
 }
 
-// 获取文件名称
+// FileGetName 获取文件名称
 func FileGetName(filePath string) string {
 	return path.Base(filePath)
 }
 
-// 获取取文件大小
+// FileGetSize 获取取文件大小
 func FileGetSize(filePath string) (int64, error) {
 	fileInfo, err := os.Stat(filePath)
 	if err != nil {
