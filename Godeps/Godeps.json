@@ -4,6 +4,10 @@
 	"GodepVersion": "v79",
 	"Deps": [
 		{
+			"ImportPath": "github.com/Unknwon/goconfig",
+			"Rev": "87a46d97951ee1ea20ed3b24c25646a79e87ba5d"
+		},
+		{
 			"ImportPath": "github.com/fatih/color",
 			"Comment": "v1.5.0-8-g5df930a",
 			"Rev": "5df930a27be2502f99b292b7cc09ebad4d0891f4"
