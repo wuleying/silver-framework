@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/go-clog/clog"
+	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/globals"
 	"os"
 )
@@ -20,6 +21,11 @@ func init() {
 func main() {
 	defer clog.Shutdown()
 
-	clog.Info("Hello, silver framework.")
+	config, err := config.ConfigInit()
+	if err != nil {
+		clog.Fatal(globals.CLOG_SKIP_DISPLAY_INFO, "Init config failed: %s", err.Error())
+	}
+
+	clog.Info("Hello, %s.", config.Setting["project_name"])
 	clog.Info(globals.ROOT_DIR)
 }
