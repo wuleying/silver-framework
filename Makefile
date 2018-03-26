@@ -14,18 +14,6 @@ GO_FMT=$(GO_CMD) fmt
 # Current time
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
-# Get third package
-get:
-	go get github.com/Masterminds/glide
-	go get honnef.co/go/tools/cmd/staticcheck
-	go get honnef.co/go/tools/cmd/gosimple
-	go get honnef.co/go/tools/cmd/unused
-	go get github.com/gordonklaus/ineffassign
-	go get github.com/fzipp/gocyclo
-	go get github.com/golang/lint/golint
-	go get github.com/pierrre/gotestcover
-	go get github.com/client9/misspell/cmd/misspell
-
 # Tools
 default: build
 
@@ -102,3 +90,15 @@ ineffassign:
 
 misspell:
 	misspell $(shell find . -maxdepth 1 -mindepth 1 -type d | egrep -v "vendor|doc|bin|.git|.idea")
+
+# Get third package
+get:
+	go get github.com/Masterminds/glide
+	go get honnef.co/go/tools/cmd/staticcheck
+	go get honnef.co/go/tools/cmd/gosimple
+	go get honnef.co/go/tools/cmd/unused
+	go get github.com/gordonklaus/ineffassign
+	go get github.com/fzipp/gocyclo
+	go get github.com/golang/lint/golint
+	go get github.com/pierrre/gotestcover
+	go get github.com/client9/misspell/cmd/misspell
