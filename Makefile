@@ -14,6 +14,18 @@ GO_FMT=$(GO_CMD) fmt
 # Current time
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
+# Get
+get:
+	go get github.com/Masterminds/glide
+	go get honnef.co/go/tools/cmd/staticcheck
+	go get honnef.co/go/tools/cmd/gosimple
+	go get honnef.co/go/tools/cmd/unused
+	go get github.com/gordonklaus/ineffassign
+	go get github.com/fzipp/gocyclo
+	go get github.com/golang/lint/golint
+	go get github.com/pierrre/gotestcover
+	go get github.com/client9/misspell/cmd/misspell
+
 # Tools
 default: build
 
@@ -57,28 +69,34 @@ cover:
 	$(GO_TEST) -cover
 
 # Check tools
-check: vet lint gocyclo gosimple
+check: vet lint gocyclo gosimple unused staticcheck ineffassign misspell
 
 vet:
-	@echo "$(CUR_TIME) [INFO ] Check: vet begin"
 	@if test -n '$(shell go vet `glide nv` 2>&1)'; then \
 		echo '$(shell go vet `glide nv` 2>&1)'; \
 	fi
-	@echo "$(CUR_TIME) [INFO ] Check: vet checked\n"
 
 lint:
-	@echo "$(CUR_TIME) [INFO ] Check: lint begin"
 	@if test -n '$(shell golint `glide nv` 2>&1)'; then \
 		echo '$(shell golint `glide nv` 2>&1)'; \
 	fi
-	@echo "$(CUR_TIME) [INFO ] Check: lint checked\n"
 
 gocyclo:
-	@echo "$(CUR_TIME) [INFO ] Check: gocyclo begin"
-	gocyclo -over 10 $(shell find . -name "*.go" | egrep -v "vendor")
-	@echo "$(CUR_TIME) [INFO ] Check: gocyclo checked\n"
+	gocyclo -over 20 $(shell find . -name "*.go" | egrep -v "vendor")
 
 gosimple:
-	@echo "$(CUR_TIME) [INFO ] Check: gosimple begin"
 	gosimple $(shell glide nv)
-	@echo "$(CUR_TIME) [INFO ] Check: gosimple checked\n"
+
+unused:
+	unused $(shell glide nv)
+
+staticcheck:
+	staticcheck $(shell glide nv)
+
+ineffassign:
+	@for f in `find . -type d -depth 1 | egrep -v "git|hook|vendor"`; do \
+		ineffassign $$f; \
+	done
+
+misspell:
+	misspell $(shell find . -maxdepth 1 -mindepth 1 -type d | egrep -v "vendor|doc|bin|.git|.idea")
