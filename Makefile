@@ -11,6 +11,7 @@ GO_TEST=$(GO_CMD) test
 GO_GET=$(GO_CMD) get
 GO_FMT=$(GO_CMD) fmt
 GO_VET=$(GO_CMD) tool vet
+
 GO_LINT=golint
 GO_IMPORTS=goimports
 
