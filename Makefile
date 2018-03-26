@@ -91,7 +91,7 @@ ineffassign:
 misspell:
 	misspell $(shell find . -maxdepth 1 -mindepth 1 -type d | egrep -v "vendor|doc|bin|.git|.idea")
 
-# Get third package
+# Get tools and third packages
 get:
 	go get github.com/Masterminds/glide
 	go get honnef.co/go/tools/cmd/staticcheck
