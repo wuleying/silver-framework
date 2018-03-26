@@ -18,7 +18,7 @@ func Init() (Config, error) {
 	var config Config
 
 	flag.Parse()
-	goconfig, err := goconfig.LoadConfigFile(*globals.ConfigFilePath)
+	configHandle, err := goconfig.LoadConfigFile(*globals.ConfigFilePath)
 
 	if err != nil {
 		log.Printf("Read config file failed: %s", err)
@@ -27,7 +27,7 @@ func Init() (Config, error) {
 
 	log.Printf("Load config file success: %s", *globals.ConfigFilePath)
 
-	config.Setting, _ = goconfig.GetSection("setting")
+	config.Setting, _ = configHandle.GetSection("setting")
 
 	return config, nil
 }
