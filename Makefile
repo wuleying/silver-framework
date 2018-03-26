@@ -14,7 +14,7 @@ GO_FMT=$(GO_CMD) fmt
 # Current time
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
-# Get
+# Get third package
 get:
 	go get github.com/Masterminds/glide
 	go get honnef.co/go/tools/cmd/staticcheck
@@ -72,11 +72,13 @@ cover:
 check: vet lint gocyclo gosimple unused staticcheck ineffassign misspell
 
 vet:
+	@echo go vet
 	@if test -n '$(shell go vet `glide nv` 2>&1)'; then \
 		echo '$(shell go vet `glide nv` 2>&1)'; \
 	fi
 
 lint:
+	@echo golint
 	@if test -n '$(shell golint `glide nv` 2>&1)'; then \
 		echo '$(shell golint `glide nv` 2>&1)'; \
 	fi
