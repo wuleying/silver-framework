@@ -4,7 +4,7 @@ CUR_DIR=$(CURDIR)
 BIN_DIR=$(CUR_DIR)/bin
 
 # Go parameters
-GO_CMD=godep go
+GO_CMD=go
 GO_BUILD=$(GO_CMD) build
 GO_CLEAN=$(GO_CMD) clean
 GO_TEST=$(GO_CMD) test
@@ -14,6 +14,7 @@ GO_VET=$(GO_CMD) tool vet
 
 GO_LINT=golint
 GO_IMPORTS=goimports
+GO_CYCLO=gocyclo
 
 # Current time
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
@@ -61,7 +62,7 @@ cover:
 	$(GO_TEST) -cover
 
 # Check tools
-check: vet lint
+check: vet lint gocyclo
 
 vet:
 	@echo "$(CUR_TIME) [INFO ] Check: vet begin"
@@ -74,3 +75,8 @@ lint:
 		$(GO_LINT) $$f; \
 	done
 	@echo "$(CUR_TIME) [INFO ] Check: lint checked\n"
+
+gocyclo:
+	@echo "$(CUR_TIME) [INFO ] Check: gocyclo begin"
+	$(GO_CYCLO) -over 10 $(shell find . -name "*.go" | egrep -v "vendor")
+	@echo "$(CUR_TIME) [INFO ] Check: gocyclo checked"

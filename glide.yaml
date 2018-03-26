@@ -1,0 +1,5 @@
+package: github.com/wuleying/silver-framework
+import:
+- package: github.com/Unknwon/goconfig
+- package: github.com/go-clog/clog
+  version: ^1.1.1

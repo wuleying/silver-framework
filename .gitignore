@@ -17,5 +17,6 @@
 .DS_Store
 *.iml
 .idea/
+glide.lock
 bin/silver-framework
 config-dev.ini
