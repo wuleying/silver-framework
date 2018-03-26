@@ -10,11 +10,6 @@ GO_CLEAN=$(GO_CMD) clean
 GO_TEST=$(GO_CMD) test
 GO_GET=$(GO_CMD) get
 GO_FMT=$(GO_CMD) fmt
-GO_VET=$(GO_CMD) tool vet
-
-GO_LINT=golint
-GO_IMPORTS=goimports
-GO_CYCLO=gocyclo
 
 # Current time
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
@@ -62,21 +57,28 @@ cover:
 	$(GO_TEST) -cover
 
 # Check tools
-check: vet lint gocyclo
+check: vet lint gocyclo gosimple
 
 vet:
 	@echo "$(CUR_TIME) [INFO ] Check: vet begin"
-	$(GO_VET) $(shell find . -name "*.go" | egrep -v "vendor")
+	@if test -n '$(shell go vet `glide nv` 2>&1)'; then \
+		echo '$(shell go vet `glide nv` 2>&1)'; \
+	fi
 	@echo "$(CUR_TIME) [INFO ] Check: vet checked\n"
 
 lint:
 	@echo "$(CUR_TIME) [INFO ] Check: lint begin"
-	@for f in `find . -type d -depth 1 | egrep -v "bin|docker|docs|Godeps|vendor"`; do \
-		$(GO_LINT) $$f; \
-	done
+	@if test -n '$(shell golint `glide nv` 2>&1)'; then \
+		echo '$(shell golint `glide nv` 2>&1)'; \
+	fi
 	@echo "$(CUR_TIME) [INFO ] Check: lint checked\n"
 
 gocyclo:
 	@echo "$(CUR_TIME) [INFO ] Check: gocyclo begin"
-	$(GO_CYCLO) -over 10 $(shell find . -name "*.go" | egrep -v "vendor")
-	@echo "$(CUR_TIME) [INFO ] Check: gocyclo checked"
+	gocyclo -over 10 $(shell find . -name "*.go" | egrep -v "vendor")
+	@echo "$(CUR_TIME) [INFO ] Check: gocyclo checked\n"
+
+gosimple:
+	@echo "$(CUR_TIME) [INFO ] Check: gosimple begin"
+	gosimple $(shell glide nv)
+	@echo "$(CUR_TIME) [INFO ] Check: gosimple checked\n"
