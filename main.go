@@ -27,5 +27,6 @@ func main() {
 
 	clog.Info("Hello, %s.", config.Setting["project_name"])
 
-	admin.Server()
+	h := admin.HTTP{}
+	h.Init()
 }

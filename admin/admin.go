@@ -7,8 +7,11 @@ import (
 	"net/http"
 )
 
+type HTTP struct {
+}
+
 // Server
-func Server() {
+func (h *HTTP) Init() {
 	http.HandleFunc("/", handlers.Home)
 
 	err := http.ListenAndServe(fmt.Sprintf(":%s", "10100"), nil)
