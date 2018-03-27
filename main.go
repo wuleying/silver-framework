@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/go-clog/clog"
+	"github.com/wuleying/silver-framework/admin"
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
-	"github.com/wuleying/silver-framework/globals"
 	"os"
 )
 
@@ -26,5 +26,6 @@ func main() {
 	exceptions.CheckError(err)
 
 	clog.Info("Hello, %s.", config.Setting["project_name"])
-	clog.Info(globals.RootDir)
+
+	admin.Server()
 }
