@@ -21,7 +21,11 @@ func Init() (Config, error) {
 
 	checkFile, err := utils.FileExists(globals.ConfigFilePath)
 
-	if true == checkFile {
+	if err != nil {
+		clog.Fatal(globals.ClogSkipDisplayInfo, err.Error())
+	}
+
+	if checkFile {
 		configFilePath = globals.ConfigFilePath
 	}
 
