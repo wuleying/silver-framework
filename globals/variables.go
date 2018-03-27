@@ -8,7 +8,7 @@ import (
 // 全局变量
 var (
 	// 根目录
-	RootDir = utils.FileGetParentDirectory(utils.FileGetCurrentDirectory())
+	RootDir = utils.FileGetCurrentDirectory()
 	// 当前时间
 	CurrentTime = time.Now().String()
 )

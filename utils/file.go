@@ -3,18 +3,17 @@ package utils
 import (
 	"os"
 	"path"
-	"path/filepath"
 	"strings"
 )
 
 // FileGetCurrentDirectory 获取当前目录
 func FileGetCurrentDirectory() string {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	dir, err := os.Getwd()
 	if err != nil {
 		return ""
 	}
 
-	return strings.Replace(dir, "\\", "/", -1)
+	return dir
 }
 
 // FileGetParentDirectory 获取上级目录

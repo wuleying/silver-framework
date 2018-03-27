@@ -18,5 +18,5 @@ const (
 
 	// 配置文件路径
 	ConfigFilePath        = "config.ini"
-	ConfigFileDefaultPath = "config.default.ini"
+	ConfigDefaultFilePath = "config.default.ini"
 )

@@ -16,7 +16,7 @@ type Config struct {
 // Init 初始化配置
 func Init() (Config, error) {
 	var config Config
-	configFilePath := globals.ConfigFileDefaultPath
+	configFilePath := globals.ConfigDefaultFilePath
 
 	checkFile, err := utils.FileExists(globals.ConfigFilePath)
 	exceptions.CheckError(err)
