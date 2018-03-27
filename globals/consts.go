@@ -15,4 +15,8 @@ const (
 	// Clog skip 级别
 	ClogSkipDefault     = 0
 	ClogSkipDisplayInfo = 2
+
+	// 配置文件路径
+	ConfigFilePath        = "config.ini"
+	ConfigFileDefaultPath = "config.default.ini"
 )

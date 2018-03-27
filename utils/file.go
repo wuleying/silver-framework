@@ -38,3 +38,15 @@ func FileGetSize(filePath string) (int64, error) {
 	fileSize := fileInfo.Size()
 	return fileSize, nil
 }
+
+// FileExists 文件是否存在
+func FileExists(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return true, err
+}

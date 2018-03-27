@@ -10,6 +10,7 @@ GO_CLEAN=$(GO_CMD) clean
 GO_TEST=$(GO_CMD) test
 GO_GET=$(GO_CMD) get
 GO_FMT=$(GO_CMD) fmt
+GO_IMPORTS=goimports
 
 # Current time
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
