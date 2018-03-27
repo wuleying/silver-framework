@@ -1,10 +1,9 @@
 package config
 
 import (
-	"log"
-
 	"github.com/Unknwon/goconfig"
 	"github.com/go-clog/clog"
+	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/globals"
 	"github.com/wuleying/silver-framework/utils"
 )
@@ -20,21 +19,14 @@ func Init() (Config, error) {
 	configFilePath := globals.ConfigFileDefaultPath
 
 	checkFile, err := utils.FileExists(globals.ConfigFilePath)
-
-	if err != nil {
-		clog.Fatal(globals.ClogSkipDisplayInfo, err.Error())
-	}
+	exceptions.CheckError(err)
 
 	if checkFile {
 		configFilePath = globals.ConfigFilePath
 	}
 
 	configHandle, err := goconfig.LoadConfigFile(configFilePath)
-
-	if err != nil {
-		log.Printf("Read config file failed: %s", err)
-		return config, err
-	}
+	exceptions.CheckError(err)
 
 	clog.Info("Load config file success: %s", configFilePath)
 

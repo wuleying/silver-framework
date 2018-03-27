@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"log"
 	"os"
 	"path"
 	"path/filepath"
@@ -12,7 +11,7 @@ import (
 func FileGetCurrentDirectory() string {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
-		log.Fatal("Get current directory failed.", err.Error())
+		return ""
 	}
 
 	return strings.Replace(dir, "\\", "/", -1)
