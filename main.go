@@ -10,9 +10,14 @@ import (
 )
 
 func init() {
-	if err := clog.New(clog.CONSOLE, clog.ConsoleConfig{
+	if err := clog.New(clog.FILE, clog.FileConfig{
 		Level:      clog.INFO,
 		BufferSize: 100,
+		Filename:   "logs/log.log",
+		FileRotationConfig: clog.FileRotationConfig{
+			Rotate: true,
+			Daily:  true,
+		},
 	}); err != nil {
 		fmt.Printf("[INFO] Init console log failed. error %+v.", err)
 		os.Exit(1)

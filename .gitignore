@@ -18,4 +18,5 @@
 *.iml
 .idea/
 bin/silver-framework
+logs/*
 config.ini

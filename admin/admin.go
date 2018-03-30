@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-// HTTP http请求结构体
+// HTTP struct
 type HTTP struct {
 }
 
