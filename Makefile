@@ -16,7 +16,7 @@ GO_IMPORTS=goimports
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
 # Tools
-default: build
+default: fmt build
 
 build:
 	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME) -v $(CUR_DIR)/*.go
