@@ -7,10 +7,11 @@ import (
 	"net/http"
 )
 
+// HTTP http请求结构体
 type HTTP struct {
 }
 
-// Server
+// Init 初始化Server
 func (h *HTTP) Init() {
 	http.HandleFunc("/", handlers.Home)
 

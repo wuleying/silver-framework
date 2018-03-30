@@ -92,6 +92,9 @@ ineffassign:
 misspell:
 	misspell $(shell find . -maxdepth 1 -mindepth 1 -type d | egrep -v "vendor|doc|bin|.git|.idea")
 
+goconst:
+	goconst $(shell glide nv)
+
 # Get tools and third packages
 get:
 	go get github.com/Masterminds/glide
@@ -103,3 +106,4 @@ get:
 	go get github.com/golang/lint/golint
 	go get github.com/pierrre/gotestcover
 	go get github.com/client9/misspell/cmd/misspell
+	go get github.com/jgautheron/goconst/cmd/goconst
