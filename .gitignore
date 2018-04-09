@@ -17,6 +17,6 @@
 .DS_Store
 *.iml
 .idea/
-bin/silver-framework
+bin/silver-framework*
 logs/*
 config.ini

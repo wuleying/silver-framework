@@ -2,22 +2,17 @@ package commands
 
 import (
 	ucli "github.com/urfave/cli"
+	"github.com/wuleying/silver-framework/globals"
 )
 
 var Commands = []ucli.Command{
 	{
-		Name:    "blockchain",
-		Aliases: []string{"bc"},
-		Usage:   "Blockchain opertaions",
-		Subcommands: []ucli.Command{
-			{
-				Name:    "get",
-				Aliases: []string{"g"},
-				Usage:   "Get all blockchain info",
-				Action: func(c *ucli.Context) error {
-					return nil
-				},
-			},
+		Name:    "version",
+		Aliases: []string{"V"},
+		Usage:   "Print version info",
+		Action: func(c *ucli.Context) error {
+			println(globals.Version)
+			return nil
 		},
 	},
 }

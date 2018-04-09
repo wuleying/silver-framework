@@ -20,6 +20,7 @@ default: fmt build
 
 build:
 	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME) -v $(CUR_DIR)/*.go
+	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME)-cli -v $(CUR_DIR)/cli/*.go
 	@echo "$(CUR_TIME) [INFO ] Build completed"
 
 clean:
