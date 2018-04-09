@@ -1,5 +1,5 @@
-gohash: 36c0836cba6c26674ca3a91b63e0e2223a1d5a8cd266db1b336cddf037b2809c
-updated: 2018-03-26T11:13:38.073247739+08:00
+hash: 36c0836cba6c26674ca3a91b63e0e2223a1d5a8cd266db1b336cddf037b2809c
+updated: 2018-04-09T11:15:06.973638498+08:00
 imports:
 - name: github.com/fatih/color
   version: 507f6050b8568533fb3f5504de8e5205fa62a114
@@ -11,6 +11,8 @@ imports:
   version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
 - name: github.com/Unknwon/goconfig
   version: ef1e4c783f8f0478bd8bff0edb3dd0bade552599
+- name: github.com/urfave/cli
+  version: 8e01ec4cd3e2d84ab2fe90d8210528ffbb06d8ff
 - name: golang.org/x/sys
   version: 91ee8cde435411ca3f1cd365e8f20131aed4d0a1
   subpackages:
