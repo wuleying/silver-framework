@@ -16,7 +16,7 @@ type HTTP struct {
 
 // Init 初始化Server
 func (h *HTTP) Init() {
-	clog.Info("Hello, %s.", h.Config.Setting["project_name"])
+	clog.Info("Hello, %s", h.Config.Setting["project_name"])
 
 	http.HandleFunc("/", handlers.Home)
 

@@ -37,9 +37,9 @@ func init() {
 func main() {
 	defer clog.Shutdown()
 
-	config, err := config.Init()
+	cfg, err := config.Init()
 	exceptions.CheckError(err)
 
-	h := admin.HTTP{Config: &config}
+	h := admin.HTTP{Config: &cfg}
 	h.Init()
 }
