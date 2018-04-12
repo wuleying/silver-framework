@@ -2,7 +2,6 @@ package globals
 
 // 全局常量
 const (
-	ProjectName = "silver-framework"
 	Version     = "0.0.1"
 
 	// 配置文件路径

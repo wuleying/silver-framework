@@ -16,10 +16,18 @@ type HTTP struct {
 
 // Init 初始化Server
 func (h *HTTP) Init() {
-	clog.Info("Hello, %s", h.Config.Setting["project_name"])
+	clog.Info(
+		"Hello, %s. %s:%s",
+		h.Config.Setting["project_name"],
+		h.Config.Setting["host"],
+		h.Config.Setting["port"],
+	)
 
 	http.HandleFunc("/", handlers.Home)
 
-	err := http.ListenAndServe(fmt.Sprintf(":%s", "10100"), nil)
+	err := http.ListenAndServe(
+		fmt.Sprintf("%s:%s", h.Config.Setting["host"], h.Config.Setting["port"]),
+		nil,
+	)
 	exceptions.CheckError(err)
 }
