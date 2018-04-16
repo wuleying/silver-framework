@@ -4,6 +4,7 @@ import (
 	ucli "github.com/urfave/cli"
 	"github.com/wuleying/silver-framework/globals"
 	"os"
+	"github.com/wuleying/silver-framework/cli/commands"
 )
 
 func main() {
@@ -18,8 +19,7 @@ func run() {
 			Aliases: []string{"V"},
 			Usage:   "Print version info",
 			Action: func(c *ucli.Context) error {
-				println(globals.Version)
-				return nil
+				return commands.PrintVersion()
 			},
 		},
 	}
