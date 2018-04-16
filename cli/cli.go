@@ -30,7 +30,7 @@ func run() {
 	app.Version = globals.Version
 	app.Authors = []ucli.Author{
 		ucli.Author{
-			Name:  "Luo",
+			Name:  "Silver",
 			Email: "lolooo@live.com",
 		},
 	}
