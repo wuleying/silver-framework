@@ -16,12 +16,15 @@ GO_IMPORTS=goimports
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
 # Tools
-default: fmt build
+default: fmt build build-cli
 
 build:
 	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME) -v $(CUR_DIR)/*.go
+	@echo "$(CUR_TIME) [INFO ] Build $(PROJECT_NAME) completed"
+
+build-cli:
 	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME)-cli -v $(CUR_DIR)/cli/*.go
-	@echo "$(CUR_TIME) [INFO ] Build completed"
+	@echo "$(CUR_TIME) [INFO ] Build $(PROJECT_NAME)-cli completed"
 
 clean:
 	$(GO_CLEAN)
