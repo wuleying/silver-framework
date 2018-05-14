@@ -1,9 +1,9 @@
 package main
 
 import (
+	"os"
 	ucli "github.com/urfave/cli"
 	"github.com/wuleying/silver-framework/globals"
-	"os"
 	"github.com/wuleying/silver-framework/cli/commands"
 )
 
