@@ -11,7 +11,7 @@ func main() {
 	run()
 }
 
-// Run 运行命令行
+// run 运行命令行
 func run() {
 	var commandList = []ucli.Command{
 		{
