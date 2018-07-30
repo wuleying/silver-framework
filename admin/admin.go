@@ -18,6 +18,9 @@ type HTTP struct {
 // Init 初始化Server
 func (h *HTTP) Init() {
 	router := httprouter.New()
+	router.NotFound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Oh no, not found"))
+	})
 	router.GET("/", handlers.Home)
 	router.GET("/user", handlers.User)
 
