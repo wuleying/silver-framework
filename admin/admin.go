@@ -15,14 +15,6 @@ type HTTP struct {
 	Config *config.Config
 }
 
-func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "Welcome!\n")
-}
-
-func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "hello, %s!\n", ps.ByName("name"))
-}
-
 // Init 初始化Server
 func (h *HTTP) Init() {
 	router := httprouter.New()
