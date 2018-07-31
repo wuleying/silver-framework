@@ -2,7 +2,7 @@ package utils
 
 import "github.com/petermattis/goid"
 
-// GetGoId 获取 goroutine id
-func GetGoId() int64 {
+// GetGoID 获取 goroutine id
+func GetGoID() int64 {
 	return goid.Get()
 }

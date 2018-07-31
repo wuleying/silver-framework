@@ -3,12 +3,12 @@ package admin
 import (
 	"fmt"
 	"github.com/go-clog/clog"
-	"github.com/wuleying/silver-framework/config"
-	"github.com/wuleying/silver-framework/exceptions"
-	"net/http"
 	"github.com/julienschmidt/httprouter"
 	"github.com/wuleying/silver-framework/admin/handlers"
+	"github.com/wuleying/silver-framework/config"
+	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/utils"
+	"net/http"
 )
 
 // HTTP struct
@@ -30,7 +30,7 @@ func (h *HTTP) Init() {
 		h.Config.Setting["project_name"],
 		h.Config.Setting["host"],
 		h.Config.Setting["port"],
-		utils.GetGoId())
+		utils.GetGoID())
 
 	err := http.ListenAndServe(fmt.Sprintf(":%s", h.Config.Setting["port"]), router)
 	exceptions.CheckError(err)

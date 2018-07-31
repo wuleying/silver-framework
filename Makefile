@@ -39,10 +39,6 @@ imports:
 	$(GO_IMPORTS) $(shell find . -name "*.go" | egrep -v "vendor")
 	@echo "$(CUR_TIME) [INFO ] Go imports completed"
 
-godep:
-	godep save
-	@echo "$(CUR_TIME) [INFO ] Godep saved"
-
 ps:
 	ps -ef | grep $(PROJECT_NAME)
 
