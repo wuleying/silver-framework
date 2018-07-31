@@ -101,10 +101,10 @@ goconst:
 
 # Get tools and third packages
 get:
-	go get github.com/Masterminds/glide
 	go get honnef.co/go/tools/cmd/staticcheck
 	go get honnef.co/go/tools/cmd/gosimple
 	go get honnef.co/go/tools/cmd/unused
+	go get github.com/Masterminds/glide
 	go get github.com/gordonklaus/ineffassign
 	go get github.com/fzipp/gocyclo
 	go get github.com/golang/lint/golint
@@ -112,3 +112,4 @@ get:
 	go get github.com/client9/misspell/cmd/misspell
 	go get github.com/jgautheron/goconst/cmd/goconst
 	go get github.com/wgliang/goappmonitor
+	go get github.com/petermattis/goid

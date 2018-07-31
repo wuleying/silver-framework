@@ -449,8 +449,6 @@ loop:
 		}
 
 		switch c2 {
-		case '>':
-			continue
 		case ']':
 			w.rest.WriteByte(c1)
 			w.rest.WriteByte(c2)
