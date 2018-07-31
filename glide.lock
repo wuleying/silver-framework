@@ -1,18 +1,22 @@
-hash: 36c0836cba6c26674ca3a91b63e0e2223a1d5a8cd266db1b336cddf037b2809c
-updated: 2018-04-09T11:15:06.973638498+08:00
+hash: 23245598214feff5a94ca84adf5de1de12520402dbba9d9784083aebd34c9d93
+updated: 2018-07-31T16:57:30.4922037+08:00
 imports:
 - name: github.com/fatih/color
   version: 507f6050b8568533fb3f5504de8e5205fa62a114
 - name: github.com/go-clog/clog
-  version: 8492a6faa632c31ba82f562b53b4a6e5eacf2732
+  version: 3bc2eaba5fa35df0338549cc1180dc45f6fc2a16
+- name: github.com/julienschmidt/httprouter
+  version: 8c199fb6259ffc1af525cc3ad52ee60ba8359669
 - name: github.com/mattn/go-colorable
   version: efa589957cd060542a26d2dd7832fd6a6c6c3ade
 - name: github.com/mattn/go-isatty
   version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
+- name: github.com/petermattis/goid
+  version: b0b1615b78e5ee59739545bb38426383b2cda4c9
 - name: github.com/Unknwon/goconfig
   version: ef1e4c783f8f0478bd8bff0edb3dd0bade552599
 - name: github.com/urfave/cli
-  version: 8e01ec4cd3e2d84ab2fe90d8210528ffbb06d8ff
+  version: cfb38830724cc34fedffe9a2a29fb54fa9169cd1
 - name: golang.org/x/sys
   version: 91ee8cde435411ca3f1cd365e8f20131aed4d0a1
   subpackages:
