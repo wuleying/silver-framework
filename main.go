@@ -38,6 +38,6 @@ func main() {
 	cfg, err := config.Init()
 	exceptions.CheckError(err)
 
-	h := admin.HTTP{Config: &cfg}
-	h.Init()
+	http := admin.HTTP{Config: &cfg}
+	http.Init()
 }

@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"github.com/julienschmidt/httprouter"
 	"github.com/wuleying/silver-framework/admin/handlers"
+	"github.com/wuleying/silver-framework/utils"
 )
 
 // HTTP struct
@@ -25,11 +26,11 @@ func (h *HTTP) Init() {
 	router.GET("/user", handlers.User)
 
 	clog.Info(
-		"Hello, %s. %s:%s",
+		"Hello, %s. %s:%s, Goid: %d",
 		h.Config.Setting["project_name"],
 		h.Config.Setting["host"],
 		h.Config.Setting["port"],
-	)
+		utils.GetGoId())
 
 	err := http.ListenAndServe(fmt.Sprintf(":%s", h.Config.Setting["port"]), router)
 	exceptions.CheckError(err)
