@@ -54,6 +54,9 @@ stop:
 test:
 	$(GO_TEST) ./utils
 
+bench:
+	$(GO_TEST) -bench=. ./utils
+
 cover:
 	$(GO_TEST) -cover
 
