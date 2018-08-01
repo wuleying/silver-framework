@@ -8,6 +8,7 @@ GO_CMD=go
 GO_BUILD=$(GO_CMD) build
 GO_CLEAN=$(GO_CMD) clean
 GO_TEST=$(GO_CMD) test
+GO_DOC=$(GO_CMD) doc
 GO_GET=$(GO_CMD) get
 GO_FMT=$(GO_CMD) fmt
 GO_IMPORTS=goimports
@@ -59,6 +60,10 @@ bench:
 
 cover:
 	$(GO_TEST) -cover
+
+# Go docs
+doc:
+	$(GO_DOC) ./utils
 
 # Check tools
 check: vet lint gocyclo gosimple unused staticcheck ineffassign misspell
