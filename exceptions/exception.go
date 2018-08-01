@@ -10,6 +10,6 @@ import (
 func CheckError(err error) {
 	if err != nil {
 		_, file, line, _ := runtime.Caller(1)
-		clog.Fatal(globals.ClogSkipDefault, "%s:%d %s", file, line, err.Error())
+		clog.Error(globals.ClogSkipDefault, "%s:%d %s", file, line, err.Error())
 	}
 }
