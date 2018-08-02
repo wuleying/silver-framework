@@ -22,11 +22,12 @@ func (h *HTTP) Init() {
 	router.NotFound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Oh no, not found"))
 	})
+
 	router.GET("/", handlers.Home)
 	router.GET("/user", handlers.User)
 
 	clog.Info(
-		"Hello, %s. %s:%s, Goid: %d",
+		"Hello, %s. %s:%s, goid: %d",
 		h.Config.Setting["project_name"],
 		h.Config.Setting["host"],
 		h.Config.Setting["port"],
