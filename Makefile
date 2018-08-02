@@ -55,11 +55,11 @@ stop:
 test:
 	$(GO_TEST) ./utils
 
+cover:
+	$(GO_TEST) -cover ./utils
+
 bench:
 	$(GO_TEST) -bench=. ./utils
-
-cover:
-	$(GO_TEST) -cover
 
 # Go docs
 doc:
