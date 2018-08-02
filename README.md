@@ -1,6 +1,8 @@
 silver-framework
 ======
 
+[![Build Status](https://travis-ci.org/wuleying/silver-framework.svg?branch=master)](https://travis-ci.org/wuleying/silver-framework)
+
 ## Introduction
 Silver framework 
 
