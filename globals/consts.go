@@ -3,15 +3,15 @@ package globals
 // 全局常量
 const (
 	// 系统版本
-	Version = "0.0.1"
+	Version string = "0.0.1"
 
 	// 配置文件路径
-	ConfigFilePath        = "config.ini"
-	ConfigDefaultFilePath = "config.default.ini"
+	ConfigFilePath        string = "config.ini"
+	ConfigDefaultFilePath string = "config.default.ini"
 
 	// Clog skip 级别
-	ClogSkipDefault     = 0
-	ClogSkipDisplayInfo = 2
+	ClogSkipDefault     int = 0
+	ClogSkipDisplayInfo int = 2
 )
 
 // 权限
