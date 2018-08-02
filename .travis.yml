@@ -7,7 +7,6 @@ go:
   - "1.10"
   - tip
 script:
-  - make check
   - make test
   - make cover
   - make bench
