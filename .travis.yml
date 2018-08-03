@@ -6,10 +6,7 @@ go:
   - 1.9
   - "1.10"
   - tip
-before_install:
-  - make get
 script:
-  - make check
   - make test
   - make cover
   - make bench
