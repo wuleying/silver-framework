@@ -2,9 +2,6 @@ package globals
 
 // 全局常量
 const (
-	// 系统版本
-	Version string = "0.0.1"
-
 	// 配置文件路径
 	ConfigFilePath        string = "config.ini"
 	ConfigDefaultFilePath string = "config.default.ini"

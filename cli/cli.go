@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
 	ucli "github.com/urfave/cli"
-	"github.com/wuleying/silver-framework/globals"
 	"github.com/wuleying/silver-framework/cli/commands"
+	"github.com/wuleying/silver-framework/version"
+	"os"
 )
 
 func main() {
@@ -27,7 +27,7 @@ func run() {
 	app := ucli.NewApp()
 	app.Name = "Silver Framework"
 	app.Usage = "CLI tools"
-	app.Version = globals.Version
+	app.Version = version.Version
 	app.Authors = []ucli.Author{
 		ucli.Author{
 			Name:  "Silver",

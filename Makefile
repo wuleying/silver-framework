@@ -3,6 +3,15 @@ PROJECT_NAME=silver-framework
 CUR_DIR=$(CURDIR)
 BIN_DIR=$(CUR_DIR)/bin
 
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+SHA1=`git rev-parse --short HEAD`
+CUR_DATE=`date +"%Y-%m-%d"`
+CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
+
+VERSION=$(BRANCH).$(SHA1).$(CUR_DATE)
+
+LDFLAGS=-ldflags "-X \"github.com/wuleying/silver-framework/version.Version=$(VERSION)\""
+
 # Go parameters
 GO_CMD=go
 GO_BUILD=$(GO_CMD) build
@@ -13,18 +22,17 @@ GO_GET=$(GO_CMD) get
 GO_FMT=$(GO_CMD) fmt
 GO_IMPORTS=goimports
 
-# Current time
-CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
-
 # Tools
 default: fmt build build-cli
 
+dev: stop default run
+
 build:
-	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME) -v $(CUR_DIR)/*.go
+	$(GO_BUILD) $(LDFLAGS) -o $(BIN_DIR)/$(PROJECT_NAME) -v $(CUR_DIR)/*.go
 	@echo "$(CUR_TIME) [INFO ] Build $(PROJECT_NAME) completed"
 
 build-cli:
-	$(GO_BUILD) -o $(BIN_DIR)/$(PROJECT_NAME)-cli -v $(CUR_DIR)/cli/*.go
+	$(GO_BUILD) $(LDFLAGS) -o $(BIN_DIR)/$(PROJECT_NAME)-cli -v $(CUR_DIR)/cli/*.go
 	@echo "$(CUR_TIME) [INFO ] Build $(PROJECT_NAME)-cli completed"
 
 clean:
@@ -44,8 +52,9 @@ ps:
 	ps -ef | grep $(PROJECT_NAME)
 
 run:
-	@echo $(CUR_TIME) [INFO ] CUR_DIR=\"$(CUR_DIR)\"
-	@echo $(CUR_TIME) [INFO ] BIN_DIR=\"$(BIN_DIR)\"
+	@echo $(CUR_TIME) [INFO ] CUR_DIR=$(CUR_DIR)
+	@echo $(CUR_TIME) [INFO ] BIN_DIR=$(BIN_DIR)
+	@echo $(CUR_TIME) [INFO ] VERSION=$(VERSION)
 	$(BIN_DIR)/$(PROJECT_NAME)
 
 stop:

@@ -8,6 +8,7 @@ import (
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/utils"
+	"github.com/wuleying/silver-framework/version"
 	"net/http"
 )
 
@@ -27,10 +28,11 @@ func (h *HTTP) Init() {
 	router.GET("/user", handlers.User)
 
 	clog.Info(
-		"Hello, %s. %s:%s, goid: %d",
+		"Hello, %s. %s:%s, version: %s, goid: %d",
 		h.Config.Setting["project_name"],
 		h.Config.Setting["host"],
 		h.Config.Setting["port"],
+		version.Version,
 		utils.GetGoID())
 
 	err := http.ListenAndServe(fmt.Sprintf(":%s", h.Config.Setting["port"]), router)
