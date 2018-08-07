@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/bwmarrin/snowflake"
 	"github.com/go-clog/clog"
 	"github.com/wuleying/silver-framework/admin"
 	"github.com/wuleying/silver-framework/config"
@@ -34,6 +35,10 @@ func init() {
 
 func main() {
 	defer clog.Shutdown()
+
+	node, err := snowflake.NewNode(1)
+	exceptions.CheckError(err)
+	clog.Info("request_id: %s", node.Generate().Base58())
 
 	cfg, err := config.Init()
 	exceptions.CheckError(err)

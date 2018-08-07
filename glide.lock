@@ -1,6 +1,8 @@
 hash: 23245598214feff5a94ca84adf5de1de12520402dbba9d9784083aebd34c9d93
-updated: 2018-07-31T16:57:30.4922037+08:00
+updated: 2018-08-07T15:36:02.935009527+08:00
 imports:
+- name: github.com/bwmarrin/snowflake
+  version: 68117e6bbede4dd72d70c7a58d73348ead068509
 - name: github.com/fatih/color
   version: 507f6050b8568533fb3f5504de8e5205fa62a114
 - name: github.com/go-clog/clog

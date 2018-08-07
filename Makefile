@@ -126,3 +126,4 @@ get:
 	$(GO_GET) github.com/jgautheron/goconst/cmd/goconst
 	$(GO_GET) github.com/wgliang/goappmonitor
 	$(GO_GET) github.com/petermattis/goid
+	$(GO_GET) github.com/bwmarrin/snowflake
