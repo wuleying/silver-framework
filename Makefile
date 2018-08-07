@@ -114,15 +114,15 @@ goconst:
 
 # Get tools and third packages
 get:
-	go get honnef.co/go/tools/cmd/staticcheck
-	go get honnef.co/go/tools/cmd/gosimple
-	go get honnef.co/go/tools/cmd/unused
-	go get github.com/Masterminds/glide
-	go get github.com/gordonklaus/ineffassign
-	go get github.com/fzipp/gocyclo
-	go get github.com/golang/lint/golint
-	go get github.com/pierrre/gotestcover
-	go get github.com/client9/misspell/cmd/misspell
-	go get github.com/jgautheron/goconst/cmd/goconst
-	go get github.com/wgliang/goappmonitor
-	go get github.com/petermattis/goid
+	$(GO_GET) honnef.co/go/tools/cmd/staticcheck
+	$(GO_GET) honnef.co/go/tools/cmd/gosimple
+	$(GO_GET) honnef.co/go/tools/cmd/unused
+	$(GO_GET) github.com/Masterminds/glide
+	$(GO_GET) github.com/gordonklaus/ineffassign
+	$(GO_GET) github.com/fzipp/gocyclo
+	$(GO_GET) github.com/golang/lint/golint
+	$(GO_GET) github.com/pierrre/gotestcover
+	$(GO_GET) github.com/client9/misspell/cmd/misspell
+	$(GO_GET) github.com/jgautheron/goconst/cmd/goconst
+	$(GO_GET) github.com/wgliang/goappmonitor
+	$(GO_GET) github.com/petermattis/goid
