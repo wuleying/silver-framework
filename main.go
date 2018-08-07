@@ -38,8 +38,8 @@ func main() {
 
 	node, err := snowflake.NewNode(1)
 	exceptions.CheckError(err)
-	requestId := node.Generate()
 
+	requestId := node.Generate()
 	clog.Info("Time: %d", requestId.Time())
 	clog.Info("Node: %d", requestId.Node())
 	clog.Info("Step: %d", requestId.Step())
