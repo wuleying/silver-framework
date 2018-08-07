@@ -5,10 +5,10 @@ BIN_DIR=$(CUR_DIR)/bin
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 SHA1=`git rev-parse --short HEAD`
-CUR_DATE=`date +"%Y-%m-%d"`
+CUR_DATE=`date +"%Y%m%d"`
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
-VERSION=$(BRANCH).$(SHA1).$(CUR_DATE)
+VERSION=$(BRANCH).$(CUR_DATE).$(SHA1)
 
 LDFLAGS=-ldflags "-X \"github.com/wuleying/silver-framework/version.Version=$(VERSION)\""
 
