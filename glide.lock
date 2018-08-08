@@ -1,5 +1,5 @@
 hash: 23245598214feff5a94ca84adf5de1de12520402dbba9d9784083aebd34c9d93
-updated: 2018-08-07T15:36:02.935009527+08:00
+updated: 2018-08-08T17:04:58.687985014+08:00
 imports:
 - name: github.com/bwmarrin/snowflake
   version: 68117e6bbede4dd72d70c7a58d73348ead068509
@@ -7,6 +7,16 @@ imports:
   version: 507f6050b8568533fb3f5504de8e5205fa62a114
 - name: github.com/go-clog/clog
   version: 3bc2eaba5fa35df0338549cc1180dc45f6fc2a16
+- name: github.com/go-redis/redis
+  version: e3b56f76413b39655b6c52d339bfb3b07a388d06
+  subpackages:
+  - internal
+  - internal/consistenthash
+  - internal/hashtag
+  - internal/pool
+  - internal/proto
+  - internal/singleflight
+  - internal/util
 - name: github.com/julienschmidt/httprouter
   version: 8c199fb6259ffc1af525cc3ad52ee60ba8359669
 - name: github.com/mattn/go-colorable
