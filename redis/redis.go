@@ -6,6 +6,7 @@ import (
 	"github.com/wuleying/silver-framework/exceptions"
 )
 
+// Init 初始化redis
 func Init() {
 	client := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
