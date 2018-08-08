@@ -128,3 +128,4 @@ get:
 	$(GO_GET) github.com/wgliang/goappmonitor
 	$(GO_GET) github.com/petermattis/goid
 	$(GO_GET) github.com/bwmarrin/snowflake
+	$(GO_GET) github.com/go-redis/redis
