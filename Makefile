@@ -38,6 +38,7 @@ build-cli:
 clean:
 	$(GO_CLEAN)
 	rm $(BIN_DIR)/$(PROJECT_NAME)
+	rm $(BIN_DIR)/$(PROJECT_NAME)-cli
 	@echo "$(CUR_TIME) [INFO ] Clean completed"
 
 fmt:

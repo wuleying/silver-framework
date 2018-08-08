@@ -40,9 +40,11 @@ func main() {
 	exceptions.CheckError(err)
 
 	requestId := node.Generate()
-	clog.Info("Time: %d", requestId.Time())
-	clog.Info("Node: %d", requestId.Node())
-	clog.Info("Step: %d", requestId.Step())
+	/*
+		clog.Info("Time: %d", requestId.Time())
+		clog.Info("Node: %d", requestId.Node())
+		clog.Info("Step: %d", requestId.Step())
+	*/
 	clog.Info("Request_id: %s", requestId.Base58())
 
 	cfg, err := config.Init()
