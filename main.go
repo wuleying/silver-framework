@@ -11,6 +11,7 @@ import (
 )
 
 func init() {
+	// Clog
 	if err := clog.New(clog.CONSOLE, clog.ConsoleConfig{
 		Level:      clog.INFO,
 		BufferSize: 100,
