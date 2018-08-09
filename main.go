@@ -4,13 +4,32 @@ import (
 	"fmt"
 	"github.com/bwmarrin/snowflake"
 	"github.com/go-clog/clog"
+	"github.com/rcrowley/go-metrics"
+	"github.com/vrischmann/go-metrics-influxdb"
 	"github.com/wuleying/silver-framework/admin"
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
 	"os"
+	"time"
 )
 
 func init() {
+	// Metrics
+	metricsRegistry := metrics.NewRegistry()
+	metrics.RegisterDebugGCStats(metricsRegistry)
+	metrics.RegisterRuntimeMemStats(metricsRegistry)
+
+	go metrics.CaptureDebugGCStats(metricsRegistry, time.Second*5)
+	go metrics.CaptureRuntimeMemStats(metricsRegistry, time.Second*5)
+	go influxdb.InfluxDB(
+		metricsRegistry,
+		time.Second*5,
+		"http://localhost:8086",
+		"metrics",
+		"",
+		"",
+	)
+
 	// Clog
 	if err := clog.New(clog.CONSOLE, clog.ConsoleConfig{
 		Level:      clog.INFO,
