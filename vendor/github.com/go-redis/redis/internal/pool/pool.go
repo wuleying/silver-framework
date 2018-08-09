@@ -246,8 +246,8 @@ func (p *ConnPool) popIdle() *Conn {
 }
 
 func (p *ConnPool) Put(cn *Conn) {
-	buf := cn.Rd.Bytes()
-	if len(buf) > 0 {
+	buf := cn.Rd.PeekBuffered()
+	if buf != nil {
 		internal.Logf("connection has unread data: %.100q", buf)
 		p.Remove(cn)
 		return

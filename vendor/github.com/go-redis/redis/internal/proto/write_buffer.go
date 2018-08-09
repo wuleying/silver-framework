@@ -7,37 +7,23 @@ import (
 )
 
 type WriteBuffer struct {
-	buf []byte
+	b []byte
 }
 
 func NewWriteBuffer() *WriteBuffer {
-	return &WriteBuffer{}
+	return &WriteBuffer{
+		b: make([]byte, 0, 4096),
+	}
 }
 
-func (w *WriteBuffer) Len() int {
-	return len(w.buf)
-}
-
-func (w *WriteBuffer) Bytes() []byte {
-	return w.buf
-}
-
-func (w *WriteBuffer) Reset() {
-	w.buf = w.buf[:0]
-}
-
-func (w *WriteBuffer) Buffer() []byte {
-	return w.buf[:cap(w.buf)]
-}
-
-func (w *WriteBuffer) ResetBuffer(buf []byte) {
-	w.buf = buf[:0]
-}
+func (w *WriteBuffer) Len() int      { return len(w.b) }
+func (w *WriteBuffer) Bytes() []byte { return w.b }
+func (w *WriteBuffer) Reset()        { w.b = w.b[:0] }
 
 func (w *WriteBuffer) Append(args []interface{}) error {
-	w.buf = append(w.buf, ArrayReply)
-	w.buf = strconv.AppendUint(w.buf, uint64(len(args)), 10)
-	w.buf = append(w.buf, '\r', '\n')
+	w.b = append(w.b, ArrayReply)
+	w.b = strconv.AppendUint(w.b, uint64(len(args)), 10)
+	w.b = append(w.b, '\r', '\n')
 
 	for _, arg := range args {
 		if err := w.append(arg); err != nil {
@@ -99,19 +85,19 @@ func (w *WriteBuffer) append(val interface{}) error {
 }
 
 func (w *WriteBuffer) AppendString(s string) {
-	w.buf = append(w.buf, StringReply)
-	w.buf = strconv.AppendUint(w.buf, uint64(len(s)), 10)
-	w.buf = append(w.buf, '\r', '\n')
-	w.buf = append(w.buf, s...)
-	w.buf = append(w.buf, '\r', '\n')
+	w.b = append(w.b, StringReply)
+	w.b = strconv.AppendUint(w.b, uint64(len(s)), 10)
+	w.b = append(w.b, '\r', '\n')
+	w.b = append(w.b, s...)
+	w.b = append(w.b, '\r', '\n')
 }
 
 func (w *WriteBuffer) AppendBytes(p []byte) {
-	w.buf = append(w.buf, StringReply)
-	w.buf = strconv.AppendUint(w.buf, uint64(len(p)), 10)
-	w.buf = append(w.buf, '\r', '\n')
-	w.buf = append(w.buf, p...)
-	w.buf = append(w.buf, '\r', '\n')
+	w.b = append(w.b, StringReply)
+	w.b = strconv.AppendUint(w.b, uint64(len(p)), 10)
+	w.b = append(w.b, '\r', '\n')
+	w.b = append(w.b, p...)
+	w.b = append(w.b, '\r', '\n')
 }
 
 func formatInt(n int64) string {

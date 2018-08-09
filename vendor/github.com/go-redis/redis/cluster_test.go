@@ -727,20 +727,15 @@ var _ = Describe("ClusterClient", func() {
 
 				Eventually(func() int64 {
 					return slave.DBSize().Val()
-				}, "30s").Should(Equal(int64(0)))
+				}, 30*time.Second).Should(Equal(int64(0)))
 
 				return nil
 			})
 			Expect(err).NotTo(HaveOccurred())
 
 			state, err := client.LoadState()
-			Eventually(func() bool {
-				state, err = client.LoadState()
-				if err != nil {
-					return false
-				}
-				return state.IsConsistent()
-			}, "30s").Should(BeTrue())
+			Expect(err).NotTo(HaveOccurred())
+			Expect(state.IsConsistent()).To(BeTrue())
 
 			for _, slave := range state.Slaves {
 				err = slave.Client.ClusterFailover().Err()
@@ -749,7 +744,7 @@ var _ = Describe("ClusterClient", func() {
 				Eventually(func() bool {
 					state, _ := client.LoadState()
 					return state.IsConsistent()
-				}, "30s").Should(BeTrue())
+				}, 30*time.Second).Should(BeTrue())
 			}
 		})
 

@@ -14,9 +14,7 @@ type Conn struct {
 	netConn net.Conn
 
 	Rd *proto.Reader
-	wb *proto.WriteBuffer
-
-	concurrentReadWrite bool
+	Wb *proto.WriteBuffer
 
 	Inited bool
 	usedAt atomic.Value
@@ -25,10 +23,9 @@ type Conn struct {
 func NewConn(netConn net.Conn) *Conn {
 	cn := &Conn{
 		netConn: netConn,
+		Wb:      proto.NewWriteBuffer(),
 	}
-	buf := proto.NewElasticBufReader(netConn)
-	cn.Rd = proto.NewReader(buf)
-	cn.wb = proto.NewWriteBuffer()
+	cn.Rd = proto.NewReader(cn.netConn)
 	cn.SetUsedAt(time.Now())
 	return cn
 }
@@ -76,27 +73,6 @@ func (cn *Conn) Write(b []byte) (int, error) {
 
 func (cn *Conn) RemoteAddr() net.Addr {
 	return cn.netConn.RemoteAddr()
-}
-
-func (cn *Conn) EnableConcurrentReadWrite() {
-	cn.concurrentReadWrite = true
-	cn.wb.ResetBuffer(make([]byte, 4096))
-}
-
-func (cn *Conn) PrepareWriteBuffer() *proto.WriteBuffer {
-	if !cn.concurrentReadWrite {
-		cn.wb.ResetBuffer(cn.Rd.Buffer())
-	}
-	cn.wb.Reset()
-	return cn.wb
-}
-
-func (cn *Conn) FlushWriteBuffer(wb *proto.WriteBuffer) error {
-	_, err := cn.netConn.Write(wb.Bytes())
-	if !cn.concurrentReadWrite {
-		cn.Rd.ResetBuffer(wb.Buffer())
-	}
-	return err
 }
 
 func (cn *Conn) Close() error {

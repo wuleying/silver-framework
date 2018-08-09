@@ -1,5 +1,5 @@
-hash: 23245598214feff5a94ca84adf5de1de12520402dbba9d9784083aebd34c9d93
-updated: 2018-08-08T17:04:58.687985014+08:00
+hash: 3b144c338cd3698072a0d55737c3eac4803a96e151c8ce779cf17d3fd2f0dd4a
+updated: 2018-08-09T13:40:44.516460612+08:00
 imports:
 - name: github.com/bwmarrin/snowflake
   version: 68117e6bbede4dd72d70c7a58d73348ead068509
@@ -8,7 +8,7 @@ imports:
 - name: github.com/go-clog/clog
   version: 3bc2eaba5fa35df0338549cc1180dc45f6fc2a16
 - name: github.com/go-redis/redis
-  version: e3b56f76413b39655b6c52d339bfb3b07a388d06
+  version: 480db94d33e6088e08d628833b6c0705451d24bb
   subpackages:
   - internal
   - internal/consistenthash
@@ -29,6 +29,8 @@ imports:
   version: ef1e4c783f8f0478bd8bff0edb3dd0bade552599
 - name: github.com/urfave/cli
   version: cfb38830724cc34fedffe9a2a29fb54fa9169cd1
+- name: github.com/zserge/metric
+  version: 97e3019af51acba148e6234f10c443d7d3521069
 - name: golang.org/x/sys
   version: 91ee8cde435411ca3f1cd365e8f20131aed4d0a1
   subpackages:

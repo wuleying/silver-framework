@@ -26,6 +26,7 @@ func (h *HTTP) Init() {
 
 	router.GET("/", handlers.Home)
 	router.GET("/user", handlers.User)
+	router.GET("/metric", handlers.Metric)
 
 	clog.Info(
 		"Hello, %s. %s:%s, version: %s, goid: %d",

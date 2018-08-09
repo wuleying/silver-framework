@@ -130,6 +130,7 @@ get:
 	$(GO_GET) github.com/bwmarrin/snowflake
 	$(GO_GET) github.com/go-redis/redis
 	$(GO_GET) github.com/samuel/go-zookeeper/zk
+	$(GO_GET) github.com/rcrowley/go-metrics
 
 glide:
 	glide install

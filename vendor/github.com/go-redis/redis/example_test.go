@@ -140,16 +140,16 @@ func ExampleClient() {
 	}
 	fmt.Println("key", val)
 
-	val2, err := client.Get("missing_key").Result()
+	val2, err := client.Get("key2").Result()
 	if err == redis.Nil {
-		fmt.Println("missing_key does not exist")
+		fmt.Println("key2 does not exist")
 	} else if err != nil {
 		panic(err)
 	} else {
-		fmt.Println("missing_key", val2)
+		fmt.Println("key2", val2)
 	}
 	// Output: key value
-	// missing_key does not exist
+	// key2 does not exist
 }
 
 func ExampleClient_Set() {
@@ -322,6 +322,7 @@ func ExampleClient_Watch() {
 
 func ExamplePubSub() {
 	pubsub := client.Subscribe("mychannel1")
+	defer pubsub.Close()
 
 	// Wait for confirmation that subscription is created before publishing anything.
 	_, err := pubsub.Receive()
@@ -338,20 +339,8 @@ func ExamplePubSub() {
 		panic(err)
 	}
 
-	time.AfterFunc(time.Second, func() {
-		// When pubsub is closed channel is closed too.
-		_ = pubsub.Close()
-	})
-
-	// Consume messages.
-	for {
-		msg, ok := <-ch
-		if !ok {
-			break
-		}
-		fmt.Println(msg.Channel, msg.Payload)
-	}
-
+	msg := <-ch
+	fmt.Println(msg.Channel, msg.Payload)
 	// Output: mychannel1 hello
 }
 

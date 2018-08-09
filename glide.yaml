@@ -1,10 +1,14 @@
 package: github.com/wuleying/silver-framework
 import:
 - package: github.com/Unknwon/goconfig
+- package: github.com/bwmarrin/snowflake
 - package: github.com/go-clog/clog
   version: ^1.2.0
+- package: github.com/go-redis/redis
+  version: ^6.13.2
 - package: github.com/julienschmidt/httprouter
   version: ^1.1.0
 - package: github.com/petermattis/goid
 - package: github.com/urfave/cli
   version: ^1.20.0
+- package: github.com/zserge/metric

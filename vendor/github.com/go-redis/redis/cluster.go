@@ -8,7 +8,6 @@ import (
 	"math"
 	"math/rand"
 	"net"
-	"runtime"
 	"sort"
 	"sync"
 	"sync/atomic"
@@ -81,10 +80,6 @@ func (opt *ClusterOptions) init() {
 
 	if opt.RouteByLatency || opt.RouteRandomly {
 		opt.ReadOnly = true
-	}
-
-	if opt.PoolSize == 0 {
-		opt.PoolSize = 5 * runtime.NumCPU()
 	}
 
 	switch opt.ReadTimeout {
