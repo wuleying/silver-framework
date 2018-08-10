@@ -1,4 +1,5 @@
 PROJECT_NAME=silver-framework
+GIT_PATH=github.com/wuleying/$(PROJECT_NAME)
 
 CUR_DIR=$(CURDIR)
 BIN_DIR=$(CUR_DIR)/bin
@@ -10,7 +11,7 @@ CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
 VERSION=$(BRANCH).$(CUR_DATE).$(SHA1)
 
-LDFLAGS=-ldflags "-X \"github.com/wuleying/silver-framework/version.Version=$(VERSION)\""
+LDFLAGS=-ldflags "-X \"$(GIT_PATH)/version.Version=$(VERSION)\""
 
 # Go parameters
 GO_CMD=go
