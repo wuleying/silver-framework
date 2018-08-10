@@ -9,6 +9,6 @@ WORKDIR $GOPATH/src/github.com/wuleying/silver-framework
 RUN pwd
 
 ADD . $GOPATH/src/github.com/wuleying/silver-framework
-RUN make
+RUN go build .
 
 ENTRYPOINT  ["./silver-framework"]
