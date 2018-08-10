@@ -11,4 +11,3 @@ script:
   - make test
   - make cover
   - make bench
-  - make run
