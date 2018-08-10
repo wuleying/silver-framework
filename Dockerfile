@@ -1,5 +1,5 @@
 FROM golang:latest
-MAINTAINER Sliver "lolooo@live.com"
+MAINTAINER Silver "lolooo@live.com"
 
 ENV GOROOT /usr/local/go
 ENV GOPATH /Users/luoliang/projects/go
