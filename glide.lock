@@ -1,5 +1,5 @@
 hash: 3b144c338cd3698072a0d55737c3eac4803a96e151c8ce779cf17d3fd2f0dd4a
-updated: 2018-08-09T13:40:44.516460612+08:00
+updated: 2018-08-10T17:06:57.352844879+08:00
 imports:
 - name: github.com/bwmarrin/snowflake
   version: 68117e6bbede4dd72d70c7a58d73348ead068509
@@ -17,6 +17,12 @@ imports:
   - internal/proto
   - internal/singleflight
   - internal/util
+- name: github.com/influxdata/influxdb
+  version: 1320c09edd93e7acf9e73a375f6f0d3f30b6d19f
+  subpackages:
+  - client
+  - models
+  - pkg/escape
 - name: github.com/julienschmidt/httprouter
   version: 8c199fb6259ffc1af525cc3ad52ee60ba8359669
 - name: github.com/mattn/go-colorable
@@ -25,14 +31,18 @@ imports:
   version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
 - name: github.com/petermattis/goid
   version: b0b1615b78e5ee59739545bb38426383b2cda4c9
+- name: github.com/rcrowley/go-metrics
+  version: e2704e165165ec55d062f5919b4b29494e9fa790
 - name: github.com/Unknwon/goconfig
   version: ef1e4c783f8f0478bd8bff0edb3dd0bade552599
 - name: github.com/urfave/cli
   version: cfb38830724cc34fedffe9a2a29fb54fa9169cd1
+- name: github.com/vrischmann/go-metrics-influxdb
+  version: 43af8332c303f62ef62663b02b3b7d8a9802002a
 - name: github.com/zserge/metric
   version: 97e3019af51acba148e6234f10c443d7d3521069
 - name: golang.org/x/sys
-  version: 91ee8cde435411ca3f1cd365e8f20131aed4d0a1
+  version: d8e400bc7db4870d786864138af681469693d18c
   subpackages:
   - unix
 testImports: []
