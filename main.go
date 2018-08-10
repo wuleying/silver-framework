@@ -4,33 +4,25 @@ import (
 	"fmt"
 	"github.com/bwmarrin/snowflake"
 	"github.com/go-clog/clog"
-	"github.com/rcrowley/go-metrics"
-	"github.com/vrischmann/go-metrics-influxdb"
 	"github.com/wuleying/silver-framework/admin"
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
+	"github.com/wuleying/silver-framework/metrics"
 	"os"
-	"time"
 )
 
+var requestID snowflake.ID
+
 func init() {
-	// Metrics
-	metricsRegistry := metrics.NewRegistry()
-	metrics.RegisterDebugGCStats(metricsRegistry)
-	metrics.RegisterRuntimeMemStats(metricsRegistry)
-
-	go metrics.CaptureDebugGCStats(metricsRegistry, time.Second*5)
-	go metrics.CaptureRuntimeMemStats(metricsRegistry, time.Second*5)
-	go influxdb.InfluxDB(
-		metricsRegistry,
-		time.Second*5,
-		"http://localhost:8086",
-		"metrics",
-		"",
-		"",
-	)
-
 	// Clog
+	initClog()
+
+	// Request id
+	initRequestID()
+}
+
+// initClog
+func initClog() {
 	if err := clog.New(clog.CONSOLE, clog.ConsoleConfig{
 		Level:      clog.INFO,
 		BufferSize: 100,
@@ -53,17 +45,23 @@ func init() {
 	}
 }
 
-func main() {
-	defer clog.Shutdown()
-
+// initRequestID
+func initRequestID() {
 	node, err := snowflake.NewNode(1)
 	exceptions.CheckError(err)
 
-	requestID := node.Generate()
+	requestID = node.Generate()
 	clog.Info("Request_id: %s", requestID.Base58())
+}
+
+func main() {
+	defer clog.Shutdown()
 
 	cfg, err := config.Init()
 	exceptions.CheckError(err)
+
+	metric := metrics.Metric{Config: &cfg}
+	metric.Init()
 
 	http := admin.HTTP{Config: &cfg}
 	http.Init()

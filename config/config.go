@@ -11,6 +11,7 @@ import (
 // Config struct
 type Config struct {
 	Setting map[string]string
+	Metrics map[string]string
 }
 
 // Init 初始化配置
@@ -31,6 +32,7 @@ func Init() (Config, error) {
 	clog.Info("Load config file success: %s", configFilePath)
 
 	config.Setting, _ = configHandle.GetSection("setting")
+	config.Metrics, _ = configHandle.GetSection("metrics")
 
 	return config, nil
 }
