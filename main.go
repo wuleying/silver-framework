@@ -8,17 +8,18 @@ import (
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/metrics"
+	"github.com/wuleying/silver-framework/uuid"
 	"os"
 )
 
-var requestID snowflake.ID
+var UUID snowflake.ID
 
 func init() {
 	// Clog
 	initClog()
 
-	// Request id
-	initRequestID()
+	// UUID
+	UUID = uuid.GetUUID()
 }
 
 // initClog
@@ -46,13 +47,6 @@ func initClog() {
 }
 
 // initRequestID
-func initRequestID() {
-	node, err := snowflake.NewNode(1)
-	exceptions.CheckError(err)
-
-	requestID = node.Generate()
-	clog.Info("Request_id: %s", requestID.Base58())
-}
 
 func main() {
 	defer clog.Shutdown()
