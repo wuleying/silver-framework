@@ -114,6 +114,16 @@ misspell:
 goconst:
 	goconst $(shell glide nv)
 
+# Docker
+docker:
+	docker build -t $(PROJECT_NAME) .
+
+docker_run:
+	docker run -p 10088:10088 $(PROJECT_NAME)
+
+docker_stop:
+	docker stop $(PROJECT_NAME)
+
 # Get tools and third packages
 get:
 	$(GO_GET) honnef.co/go/tools/cmd/staticcheck
