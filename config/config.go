@@ -8,15 +8,11 @@ import (
 	"github.com/wuleying/silver-framework/utils"
 )
 
-// Config struct
-type Config struct {
-	Setting map[string]string
-	Metrics map[string]string
-}
+type Config map[string]map[string]string
 
 // Init 初始化配置
 func Init() (Config, error) {
-	var config Config
+	configs := make(Config)
 	configFilePath := globals.ConfigDefaultFilePath
 
 	checkFile, err := utils.FileExists(globals.ConfigFilePath)
@@ -31,8 +27,11 @@ func Init() (Config, error) {
 
 	clog.Info("Load config file success: %s", configFilePath)
 
-	config.Setting, _ = configHandle.GetSection("setting")
-	config.Metrics, _ = configHandle.GetSection("metrics")
+	sectionList := configHandle.GetSectionList()
 
-	return config, nil
+	for i := 0; i < len(sectionList); i++ {
+		configs[sectionList[i]], _ = configHandle.GetSection(sectionList[i])
+	}
+
+	return configs, nil
 }

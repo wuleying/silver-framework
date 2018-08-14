@@ -16,7 +16,7 @@ import (
 
 // HTTP struct
 type HTTP struct {
-	Config *config.Config
+	Config config.Config
 	UUID   snowflake.ID
 }
 
@@ -37,14 +37,13 @@ func (h *HTTP) Init() {
 
 	clog.Info(
 		"Hello, %s. %s:%s, version: %s, uuid: %s, goid: %d",
-		h.Config.Setting["project_name"],
-		h.Config.Setting["host"],
-		h.Config.Setting["port"],
+		h.Config["setting"]["project_name"],
+		h.Config["setting"]["host"],
+		h.Config["setting"]["port"],
 		version.Version,
 		h.UUID.Base58(),
 		utils.GetGoID())
 
-	err := http.ListenAndServe(fmt.Sprintf(":%s", h.Config.Setting["port"]), router)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", h.Config["setting"]["port"]), router)
 	exceptions.CheckError(err)
-
 }

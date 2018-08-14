@@ -9,7 +9,7 @@ import (
 )
 
 type Metric struct {
-	Config *config.Config
+	Config config.Config
 }
 
 func (m *Metric) Init() {
@@ -23,9 +23,9 @@ func (m *Metric) Init() {
 	go influxdb.InfluxDB(
 		metricsRegistry,
 		time.Second*5,
-		fmt.Sprintf("http://%s:%s", m.Config.Metrics["host"], m.Config.Metrics["port"]),
-		m.Config.Metrics["database"],
-		m.Config.Metrics["username"],
-		m.Config.Metrics["password"],
+		fmt.Sprintf("http://%s:%s", m.Config["metrics"]["host"], m.Config["metrics"]["port"]),
+		m.Config["metrics"]["database"],
+		m.Config["metrics"]["username"],
+		m.Config["metrics"]["password"],
 	)
 }

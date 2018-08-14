@@ -44,9 +44,9 @@ func main() {
 	cfg, err := config.Init()
 	exceptions.CheckError(err)
 
-	metric := metrics.Metric{Config: &cfg}
+	metric := metrics.Metric{Config: cfg}
 	metric.Init()
 
-	http := admin.HTTP{Config: &cfg}
+	http := admin.HTTP{Config: cfg}
 	http.Init()
 }

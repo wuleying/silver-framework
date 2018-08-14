@@ -1,17 +1,27 @@
 package redis
 
 import (
+	"fmt"
 	"github.com/go-clog/clog"
 	"github.com/go-redis/redis"
+	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
+	"strconv"
 )
 
+type Redis struct {
+	Config config.Config
+}
+
 // Init 初始化redis
-func Init() {
+func (r *Redis) Init() {
+	db, err := strconv.Atoi(r.Config["redis"]["db"])
+	exceptions.CheckError(err)
+
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "",
-		DB:       0,
+		Addr:     fmt.Sprintf("%s:%s", r.Config["redis"]["host"], r.Config["redis"]["port"]),
+		Password: r.Config["redis"]["password"],
+		DB:       db,
 	})
 
 	var counterKey = "counter"
@@ -21,5 +31,5 @@ func Init() {
 
 	exceptions.CheckError(err)
 
-	clog.Info("current counter is %s", cntValue)
+	clog.Info("Current counter is %s", cntValue)
 }
