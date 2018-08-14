@@ -5,6 +5,7 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/go-clog/clog"
 	"github.com/julienschmidt/httprouter"
+	"github.com/wuleying/silver-framework/admin/handlers"
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/utils"
@@ -25,9 +26,9 @@ func (h *HTTP) Init() {
 	h.UUID = uuid.GetUUID()
 
 	router := httprouter.New()
-	router.NotFound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Oh no, not found"))
-	})
+
+	// Not found
+	router.NotFound = http.HandlerFunc(handlers.NotFound)
 
 	for _, route := range routes {
 		router.Handle(route.Method, route.Pattern, route.Handle)
