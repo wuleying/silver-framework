@@ -2,25 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/bwmarrin/snowflake"
 	"github.com/go-clog/clog"
 	"github.com/wuleying/silver-framework/admin"
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/metrics"
-	"github.com/wuleying/silver-framework/uuid"
 	"os"
 )
-
-var UUID snowflake.ID
-
-func init() {
-	// Clog
-	initClog()
-
-	// UUID
-	UUID = uuid.GetUUID()
-}
 
 // initClog
 func initClog() {
@@ -49,6 +37,8 @@ func initClog() {
 // initRequestID
 
 func main() {
+	// Clog
+	initClog()
 	defer clog.Shutdown()
 
 	cfg, err := config.Init()
