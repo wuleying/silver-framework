@@ -5,7 +5,6 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"github.com/go-clog/clog"
 	"github.com/julienschmidt/httprouter"
-	"github.com/wuleying/silver-framework/admin/handlers"
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/utils"
@@ -30,9 +29,9 @@ func (h *HTTP) Init() {
 		w.Write([]byte("Oh no, not found"))
 	})
 
-	router.GET("/", handlers.Home)
-	router.GET("/user", handlers.User)
-	router.GET("/metric", handlers.Metric)
+	for _, route := range routes {
+		router.Handle(route.Method, route.Pattern, route.Handle)
+	}
 
 	clog.Info(
 		"Hello, %s. %s:%s, version: %s, uuid: %s, goid: %d",
