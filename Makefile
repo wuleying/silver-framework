@@ -114,7 +114,7 @@ misspell:
 goconst:
 	goconst $(shell glide nv)
 
-# Docker
+# Docker tools
 docker:
 	docker build -t $(PROJECT_NAME) .
 
@@ -123,6 +123,11 @@ docker_run:
 
 docker_stop:
 	docker stop $(PROJECT_NAME)
+
+# Glide tools
+glide:
+	glide install
+	glide update
 
 # Get tools and third packages
 get:
@@ -143,7 +148,3 @@ get:
 	$(GO_GET) github.com/samuel/go-zookeeper/zk
 	$(GO_GET) github.com/rcrowley/go-metrics
 	$(GO_GET) github.com/vrischmann/go-metrics-influxdb
-
-glide:
-	glide install
-	glide update
