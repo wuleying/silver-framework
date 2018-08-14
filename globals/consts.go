@@ -1,14 +1,15 @@
 package globals
 
-// 全局常量
+// 配置文件路径
 const (
-	// 配置文件路径
 	ConfigFilePath        string = "config.ini"
 	ConfigDefaultFilePath string = "config.default.ini"
+)
 
-	// Clog skip 级别
-	ClogSkipDefault     int = 0
-	ClogSkipDisplayInfo int = 2
+// Clog skip 级别
+const (
+	ClogSkip = iota
+	ClogDisplayInfo
 )
 
 // 权限
