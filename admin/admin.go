@@ -27,9 +27,10 @@ func (h *HTTP) Init() {
 
 	router := httprouter.New()
 
-	// Not found
+	// not found
 	router.NotFound = http.HandlerFunc(handlers.NotFound)
 
+	// routes
 	for _, route := range routes {
 		router.Handle(route.Method, route.Pattern, route.Handle)
 	}
