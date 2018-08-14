@@ -16,7 +16,9 @@ func Init() (Config, error) {
 	configFilePath := globals.ConfigDefaultFilePath
 
 	checkFile, err := utils.FileExists(globals.ConfigFilePath)
-	exceptions.CheckError(err)
+	if err != nil {
+		return configs, err
+	}
 
 	if checkFile {
 		configFilePath = globals.ConfigFilePath
