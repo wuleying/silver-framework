@@ -3,6 +3,7 @@ package utils
 import (
 	"crypto/md5"
 	"fmt"
+	. "github.com/smartystreets/goconvey/convey"
 	"io"
 	"testing"
 )
@@ -14,9 +15,10 @@ func origMd5(raw string) string {
 }
 
 func TestMd5(t *testing.T) {
-	if Md5("luo") != origMd5("luo") {
-		t.Error("Not expect")
-	}
+	Convey("测试md5结果", t, func() {
+		So(Md5("luo"), ShouldEqual, origMd5("luo"))
+		So(Md5("Luo"), ShouldNotEqual, origMd5("luo"))
+	})
 }
 
 func BenchmarkMd5(b *testing.B) {

@@ -139,6 +139,7 @@ get:
 	$(GO_GET) github.com/fzipp/gocyclo
 	$(GO_GET) github.com/golang/lint/golint
 	$(GO_GET) github.com/pierrre/gotestcover
+	$(GO_GET) github.com/smartystreets/goconvey
 	$(GO_GET) github.com/client9/misspell/cmd/misspell
 	$(GO_GET) github.com/jgautheron/goconst/cmd/goconst
 	$(GO_GET) github.com/wgliang/goappmonitor
