@@ -1,21 +1,14 @@
 package utils
 
-import "testing"
+import (
+	. "github.com/smartystreets/goconvey/convey"
+	"testing"
+)
 
+// TestStringSub
 func TestStringSub(t *testing.T) {
-	var tests = []struct {
-		// Test table
-		in  string
-		out string
-	}{
-		{"hello world", "hel"},
-		{"你好世界", "你好世"},
-	}
-
-	for i, tt := range tests {
-		s := StringSub(tt.in, 0, 3)
-		if s != tt.out {
-			t.Errorf("%d. %s => %q, wanted: %q", i, tt.in, s, tt.out)
-		}
-	}
+	Convey("截取字符串", t, func() {
+		So(StringSub("hello world", 0, 3), ShouldEqual, "hel")
+		So(StringSub("你好世界", 0, 3), ShouldEqual, "你好世")
+	})
 }

@@ -64,7 +64,7 @@ stop:
 
 # Test tools
 test:
-	$(GO_TEST) ./utils
+	$(GO_TEST) -v ./utils
 
 cover:
 	$(GO_TEST) -cover ./utils

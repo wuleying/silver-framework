@@ -1,22 +1,14 @@
 package utils
 
-import "testing"
+import (
+	. "github.com/smartystreets/goconvey/convey"
+	"testing"
+)
 
 func TestReadableFloat(t *testing.T) {
-	var tests = []struct {
-		// Test table
-		in  float64
-		out string
-	}{
-		{1.001, "1.001"},
-		{100.01, "100.01"},
-		{1000.99, "1000.99"},
-	}
-
-	for i, tt := range tests {
-		s := ReadableFloat(tt.in)
-		if s != tt.out {
-			t.Errorf("%d. %f => %q, wanted: %q", i, tt.in, s, tt.out)
-		}
-	}
+	Convey("格式化浮点数", t, func() {
+		So(ReadableFloat(1.001), ShouldEqual, "1.001")
+		So(ReadableFloat(100.01), ShouldEqual, "100.01")
+		So(ReadableFloat(1000.99), ShouldEqual, "1000.99")
+	})
 }

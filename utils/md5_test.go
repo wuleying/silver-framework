@@ -15,7 +15,7 @@ func origMd5(raw string) string {
 }
 
 func TestMd5(t *testing.T) {
-	Convey("测试md5结果", t, func() {
+	Convey("md5字符串", t, func() {
 		So(Md5("luo"), ShouldEqual, origMd5("luo"))
 		So(Md5("Luo"), ShouldNotEqual, origMd5("luo"))
 	})
