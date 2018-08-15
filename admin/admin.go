@@ -18,12 +18,14 @@ import (
 type HTTP struct {
 	Config config.Config
 	UUID   snowflake.ID
+	Error  error
 }
 
 // Init 初始化Server
 func (h *HTTP) Init() {
 	// UUID
-	h.UUID = uuid.GetUUID()
+	h.UUID, h.Error = uuid.GetUUID()
+	exceptions.CheckError(h.Error)
 
 	router := httprouter.New()
 

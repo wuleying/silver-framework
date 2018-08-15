@@ -2,12 +2,18 @@ package uuid
 
 import (
 	"github.com/bwmarrin/snowflake"
-	"github.com/wuleying/silver-framework/exceptions"
 )
 
 // GetUUID
-func GetUUID() snowflake.ID {
+func GetUUID() (snowflake.ID, error) {
+	var UUID snowflake.ID
+
 	node, err := snowflake.NewNode(1)
-	exceptions.CheckError(err)
-	return node.Generate()
+	if err != nil {
+		return UUID, err
+	}
+
+	UUID = node.Generate()
+
+	return UUID, nil
 }
