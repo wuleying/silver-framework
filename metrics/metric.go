@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"github.com/rcrowley/go-metrics"
 	"github.com/vrischmann/go-metrics-influxdb"
-	"github.com/wuleying/silver-framework/config"
 	"time"
 )
 
 type Metric struct {
-	Config config.Config
+	Host     string
+	Port     string
+	Database string
+	Username string
+	Password string
 }
 
 func (m *Metric) Init() {
@@ -23,9 +26,9 @@ func (m *Metric) Init() {
 	go influxdb.InfluxDB(
 		metricsRegistry,
 		time.Second*5,
-		fmt.Sprintf("http://%s:%s", m.Config["metrics"]["host"], m.Config["metrics"]["port"]),
-		m.Config["metrics"]["database"],
-		m.Config["metrics"]["username"],
-		m.Config["metrics"]["password"],
+		fmt.Sprintf("http://%s:%s", m.Host, m.Port),
+		m.Database,
+		m.Username,
+		m.Password,
 	)
 }
