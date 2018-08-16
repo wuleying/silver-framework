@@ -45,14 +45,17 @@ func main() {
 	exceptions.CheckError(err)
 
 	metric := metrics.Metric{
-		Host:     cfg["metric"]["host"],
-		Port:     cfg["metric"]["port"],
-		Database: cfg["metric"]["database"],
-		Username: cfg["metric"]["username"],
-		Password: cfg["metric"]["password"],
+		Host:     cfg["metrics"]["host"],
+		Port:     cfg["metrics"]["port"],
+		Database: cfg["metrics"]["database"],
+		Username: cfg["metrics"]["username"],
+		Password: cfg["metrics"]["password"],
 	}
 	metric.Init()
 
-	http := admin.HTTP{Config: cfg}
+	http := admin.HTTP{
+		Host: cfg["setting"]["host"],
+		Port: cfg["setting"]["port"],
+	}
 	http.Init()
 }

@@ -6,7 +6,6 @@ import (
 	"github.com/go-clog/clog"
 	"github.com/julienschmidt/httprouter"
 	"github.com/wuleying/silver-framework/admin/handlers"
-	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
 	"github.com/wuleying/silver-framework/utils"
 	"github.com/wuleying/silver-framework/uuid"
@@ -16,9 +15,10 @@ import (
 
 // HTTP struct
 type HTTP struct {
-	Config config.Config
-	UUID   snowflake.ID
-	Error  error
+	Host  string
+	Port  string
+	UUID  snowflake.ID
+	Error error
 }
 
 // Init 初始化Server
@@ -38,14 +38,13 @@ func (h *HTTP) Init() {
 	}
 
 	clog.Info(
-		"Hello, %s. %s:%s, version: %s, uuid: %s, goid: %d",
-		h.Config["setting"]["project_name"],
-		h.Config["setting"]["host"],
-		h.Config["setting"]["port"],
+		"%s:%s, version: %s, uuid: %s, goid: %d",
+		h.Host,
+		h.Port,
 		version.Version,
 		h.UUID.Base58(),
 		utils.GetGoID())
 
-	err := http.ListenAndServe(fmt.Sprintf(":%s", h.Config["setting"]["port"]), router)
+	err := http.ListenAndServe(fmt.Sprintf("%s:%s", h.Host, h.Port), router)
 	exceptions.CheckError(err)
 }
