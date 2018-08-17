@@ -1,5 +1,5 @@
 hash: 3b144c338cd3698072a0d55737c3eac4803a96e151c8ce779cf17d3fd2f0dd4a
-updated: 2018-08-10T17:06:57.352844879+08:00
+updated: 2018-08-17T20:11:46.122329956+08:00
 imports:
 - name: github.com/bwmarrin/snowflake
   version: 68117e6bbede4dd72d70c7a58d73348ead068509
@@ -45,4 +45,21 @@ imports:
   version: d8e400bc7db4870d786864138af681469693d18c
   subpackages:
   - unix
-testImports: []
+testImports:
+- name: github.com/gopherjs/gopherjs
+  version: 0892b62f0d9fb5857760c3cfca837207185117ee
+  subpackages:
+  - js
+- name: github.com/jtolds/gls
+  version: 77f18212c9c7edc9bd6a33d383a7b545ce62f064
+- name: github.com/smartystreets/assertions
+  version: 886ec427f6b97ea7c207ab54f4045050647c2820
+  subpackages:
+  - internal/go-render/render
+  - internal/oglematchers
+- name: github.com/smartystreets/goconvey
+  version: ef6db91d284a0e7badaa1f0c404c30aa7dee3aed
+  subpackages:
+  - convey
+  - convey/gotest
+  - convey/reporting
