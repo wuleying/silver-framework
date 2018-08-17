@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// Metric 度量结构体
 type Metric struct {
 	Host     string
 	Port     string
@@ -15,6 +16,7 @@ type Metric struct {
 	Password string
 }
 
+// Init 初始化 metrics
 func (m *Metric) Init() {
 	metricsRegistry := metrics.NewRegistry()
 	metrics.RegisterDebugGCStats(metricsRegistry)

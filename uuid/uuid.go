@@ -4,7 +4,7 @@ import (
 	"github.com/bwmarrin/snowflake"
 )
 
-// GetUUID
+// GetUUID 获取UUID
 func GetUUID() (snowflake.ID, error) {
 	var UUID snowflake.ID
 

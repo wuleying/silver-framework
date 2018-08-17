@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-// Init
+// Init 初始化clog
 func Init() {
 	if err := clog.New(clog.CONSOLE, clog.ConsoleConfig{
 		Level:      clog.INFO,

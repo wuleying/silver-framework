@@ -9,6 +9,7 @@ import (
 	"strconv"
 )
 
+// Redis 结构体
 type Redis struct {
 	Config config.Config
 }

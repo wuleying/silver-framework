@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// NotFound 404页面
 func NotFound(response http.ResponseWriter, reuqest *http.Request) {
 	template, err := template.ParseFiles(globals.TemplateDir + "/404.html")
 	exceptions.CheckError(err)

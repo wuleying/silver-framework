@@ -5,14 +5,14 @@ import (
 	"github.com/wuleying/silver-framework/admin/handlers"
 )
 
-// Route
+// Route 路由
 type Route struct {
 	Method  string
 	Pattern string
 	Handle  httprouter.Handle
 }
 
-// Routes
+// Routes 路由规则
 type Routes []Route
 
 // 路由规则

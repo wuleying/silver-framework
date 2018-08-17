@@ -8,6 +8,7 @@ import (
 	"github.com/wuleying/silver-framework/utils"
 )
 
+// Config 配置数据，二维map
 type Config map[string]map[string]string
 
 // Init 初始化配置

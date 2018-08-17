@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// Metric 度量管理
 func Metric(response http.ResponseWriter, request *http.Request, _ httprouter.Params) {
 	template, err := template.ParseFiles(globals.TemplateDir + "/metric.html")
 	exceptions.CheckError(err)
