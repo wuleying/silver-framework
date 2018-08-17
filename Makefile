@@ -6,7 +6,7 @@ BIN_DIR=$(CUR_DIR)/bin
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 SHA1=`git rev-parse --short HEAD`
-CUR_DATE=`date +"%Y%m%d"`
+CUR_DATE=`date "+%Y%m%d"`
 CUR_TIME=`date "+%Y/%m/%d %H:%M:%S"`
 
 VERSION=$(BRANCH).$(CUR_DATE).$(SHA1)
