@@ -131,9 +131,6 @@ glide:
 
 # Get tools and third packages
 get:
-	$(GO_GET) honnef.co/go/tools/cmd/staticcheck
-	$(GO_GET) honnef.co/go/tools/cmd/gosimple
-	$(GO_GET) honnef.co/go/tools/cmd/unused
 	$(GO_GET) github.com/Masterminds/glide
 	$(GO_GET) github.com/gordonklaus/ineffassign
 	$(GO_GET) github.com/fzipp/gocyclo
@@ -149,3 +146,6 @@ get:
 	$(GO_GET) github.com/samuel/go-zookeeper/zk
 	$(GO_GET) github.com/rcrowley/go-metrics
 	$(GO_GET) github.com/vrischmann/go-metrics-influxdb
+	$(GO_GET) honnef.co/go/tools/cmd/staticcheck
+	$(GO_GET) honnef.co/go/tools/cmd/gosimple
+	$(GO_GET) honnef.co/go/tools/cmd/unused
