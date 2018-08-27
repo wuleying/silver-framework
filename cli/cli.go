@@ -13,17 +13,6 @@ func main() {
 
 // run 运行命令行
 func run() {
-	var commandList = []ucli.Command{
-		{
-			Name:    "version",
-			Aliases: []string{"V"},
-			Usage:   "Print version info",
-			Action: func(c *ucli.Context) error {
-				return commands.PrintVersion()
-			},
-		},
-	}
-
 	app := ucli.NewApp()
 	app.Name = "Silver Framework"
 	app.Usage = "CLI tools"
@@ -34,6 +23,6 @@ func run() {
 			Email: "lolooo@live.com",
 		},
 	}
-	app.Commands = commandList
+	app.Commands = commands.CommandList
 	app.Run(os.Args)
 }
