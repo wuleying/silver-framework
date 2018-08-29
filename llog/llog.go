@@ -29,3 +29,8 @@ func Init() {
 		os.Exit(1)
 	}
 }
+
+// Shutdown clog shutdown
+func Shutdown() {
+	clog.Shutdown()
+}

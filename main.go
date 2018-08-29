@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/go-clog/clog"
 	"github.com/wuleying/silver-framework/admin"
 	"github.com/wuleying/silver-framework/config"
 	"github.com/wuleying/silver-framework/exceptions"
@@ -12,7 +11,7 @@ import (
 func main() {
 	// Log init
 	llog.Init()
-	defer clog.Shutdown()
+	defer llog.Shutdown()
 
 	cfg, err := config.Init()
 	exceptions.CheckError(err)
